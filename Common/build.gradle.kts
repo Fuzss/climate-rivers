@@ -4,7 +4,7 @@ plugins {
 
 dependencies {
     modCompileOnlyApi(sharedLibs.puzzleslib.common)
-    modCompileOnlyApi(sharedLibs.biolith.common)
+    compileOnlyApi(sharedLibs.biolith.common)
 }
 
 multiloader {

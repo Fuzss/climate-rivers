@@ -1,7 +1,7 @@
 package fuzs.climaterivers.fabric;
 
-import fuzs.climaterivers.ClimateRivers;
-import fuzs.puzzleslib.api.core.v1.ModConstructor;
+import fuzs.climaterivers.common.ClimateRivers;
+import fuzs.puzzleslib.common.api.core.v1.ModConstructor;
 import net.fabricmc.api.ModInitializer;
 
 public class ClimateRiversFabric implements ModInitializer {

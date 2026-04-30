@@ -1,7 +1,7 @@
-package fuzs.climaterivers.handler;
+package fuzs.climaterivers.common.handler;
 
 import com.mojang.datafixers.util.Pair;
-import fuzs.climaterivers.init.ModBiomes;
+import fuzs.climaterivers.common.init.ModBiomes;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;

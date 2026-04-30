@@ -1,6 +1,6 @@
-package fuzs.climaterivers.init;
+package fuzs.climaterivers.common.init;
 
-import fuzs.climaterivers.ClimateRivers;
+import fuzs.climaterivers.common.ClimateRivers;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;

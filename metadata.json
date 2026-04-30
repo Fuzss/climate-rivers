@@ -1,9 +1,10 @@
 {
+    "minecraft": "26.1.2",
     "mod": {
         "id": "climaterivers",
         "group": "fuzs.climaterivers",
         "name": "Climate Rivers",
-        "version": "21.11.0",
+        "version": "26.1.0",
         "authors": [
             "Fuzs"
         ],
@@ -44,13 +45,13 @@
     ],
     "links": [
         {
-            "name": "github",
-            "slug": "climaterivers"
-        },
-        {
             "name": "curseforge",
             "slug": "climate-rivers",
             "id": "1255421"
+        },
+        {
+            "name": "github",
+            "slug": "climate-rivers"
         },
         {
             "name": "modrinth",

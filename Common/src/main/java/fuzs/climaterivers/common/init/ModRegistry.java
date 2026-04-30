@@ -1,4 +1,4 @@
-package fuzs.climaterivers.init;
+package fuzs.climaterivers.common.init;
 
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;

@@ -1,6 +1,6 @@
-package fuzs.climaterivers.mixin;
+package fuzs.climaterivers.common.mixin;
 
-import fuzs.climaterivers.init.ModBiomes;
+import fuzs.climaterivers.common.init.ModBiomes;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.biome.BiomeData;
 import net.minecraft.world.level.biome.Biome;

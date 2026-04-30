@@ -1,9 +1,9 @@
 package fuzs.climaterivers.neoforge;
 
-import fuzs.climaterivers.ClimateRivers;
-import fuzs.climaterivers.data.tags.ModBiomeTagsProvider;
-import fuzs.climaterivers.init.ModRegistry;
-import fuzs.puzzleslib.api.core.v1.ModConstructor;
+import fuzs.climaterivers.common.ClimateRivers;
+import fuzs.climaterivers.common.data.tags.ModBiomeTagsProvider;
+import fuzs.climaterivers.common.init.ModRegistry;
+import fuzs.puzzleslib.common.api.core.v1.ModConstructor;
 import fuzs.puzzleslib.neoforge.api.data.v2.core.DataProviderHelper;
 import net.neoforged.fml.common.Mod;
 

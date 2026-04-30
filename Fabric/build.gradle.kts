@@ -5,5 +5,5 @@ plugins {
 dependencies {
     modApi(sharedLibs.fabricapi.fabric)
     modApi(sharedLibs.puzzleslib.fabric)
-    modApi(sharedLibs.biolith.fabric)
+    api(sharedLibs.biolith.fabric)
 }

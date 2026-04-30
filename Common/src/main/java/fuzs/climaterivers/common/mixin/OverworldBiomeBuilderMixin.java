@@ -1,7 +1,7 @@
-package fuzs.climaterivers.mixin;
+package fuzs.climaterivers.common.mixin;
 
 import com.mojang.datafixers.util.Pair;
-import fuzs.climaterivers.handler.RiverBiomeBuilder;
+import fuzs.climaterivers.common.handler.RiverBiomeBuilder;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;

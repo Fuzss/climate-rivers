@@ -1,6 +1,6 @@
-package fuzs.climaterivers.mixin;
+package fuzs.climaterivers.common.mixin;
 
-import fuzs.climaterivers.init.ModPlacedFeatures;
+import fuzs.climaterivers.common.init.ModPlacedFeatures;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;

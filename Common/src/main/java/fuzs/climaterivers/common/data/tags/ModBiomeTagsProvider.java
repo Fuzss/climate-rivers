@@ -1,8 +1,8 @@
-package fuzs.climaterivers.data.tags;
+package fuzs.climaterivers.common.data.tags;
 
-import fuzs.climaterivers.init.ModBiomes;
-import fuzs.puzzleslib.api.data.v2.core.DataProviderContext;
-import fuzs.puzzleslib.api.data.v2.tags.AbstractTagProvider;
+import fuzs.climaterivers.common.init.ModBiomes;
+import fuzs.puzzleslib.common.api.data.v2.core.DataProviderContext;
+import fuzs.puzzleslib.common.api.data.v2.tags.AbstractTagProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.BiomeTags;
