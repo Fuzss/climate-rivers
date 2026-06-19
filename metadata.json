@@ -1,10 +1,10 @@
 {
-    "minecraft": "26.1.2",
+    "minecraft": "26.2",
     "mod": {
         "id": "climaterivers",
         "group": "fuzs.climaterivers",
         "name": "Climate Rivers",
-        "version": "26.1.0",
+        "version": "26.2.0",
         "authors": [
             "Fuzs"
         ],

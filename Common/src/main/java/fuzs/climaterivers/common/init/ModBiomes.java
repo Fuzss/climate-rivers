@@ -10,7 +10,7 @@ import net.minecraft.data.worldgen.placement.AquaticPlacements;
 import net.minecraft.data.worldgen.placement.MiscOverworldPlacements;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EntityTypes;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.BiomeGenerationSettings;
@@ -38,7 +38,7 @@ public class ModBiomes {
 
     public static Biome coldRiver(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> worldCarvers) {
         MobSpawnSettings.Builder builder = riverSpawns();
-        builder.addSpawn(MobCategory.WATER_AMBIENT, 5, new MobSpawnSettings.SpawnerData(EntityType.SALMON, 1, 5));
+        builder.addSpawn(MobCategory.WATER_AMBIENT, 5, new MobSpawnSettings.SpawnerData(EntityTypes.SALMON, 1, 5));
 
         BiomeGenerationSettings.Builder builder2 = baseRiverGeneration(placedFeatures, worldCarvers);
         addGravellySoftDisks(builder2);
@@ -60,8 +60,8 @@ public class ModBiomes {
         MobSpawnSettings.Builder builder = riverSpawns();
         builder.addSpawn(MobCategory.WATER_AMBIENT,
                 1,
-                new MobSpawnSettings.SpawnerData(EntityType.TROPICAL_FISH, 1, 5));
-        builder.addSpawn(MobCategory.WATER_AMBIENT, 4, new MobSpawnSettings.SpawnerData(EntityType.COD, 1, 5));
+                new MobSpawnSettings.SpawnerData(EntityTypes.TROPICAL_FISH, 1, 5));
+        builder.addSpawn(MobCategory.WATER_AMBIENT, 4, new MobSpawnSettings.SpawnerData(EntityTypes.COD, 1, 5));
 
         BiomeGenerationSettings.Builder builder2 = baseRiverGeneration(placedFeatures, worldCarvers);
         BiomeDefaultFeatures.addDefaultSoftDisks(builder2);
@@ -84,7 +84,7 @@ public class ModBiomes {
         MobSpawnSettings.Builder builder = riverSpawns();
         builder.addSpawn(MobCategory.WATER_AMBIENT,
                 5,
-                new MobSpawnSettings.SpawnerData(EntityType.TROPICAL_FISH, 1, 5));
+                new MobSpawnSettings.SpawnerData(EntityTypes.TROPICAL_FISH, 1, 5));
 
         BiomeGenerationSettings.Builder builder2 = baseRiverGeneration(placedFeatures, worldCarvers);
         BiomeDefaultFeatures.addDefaultSoftDisks(builder2);
@@ -105,9 +105,9 @@ public class ModBiomes {
     public static MobSpawnSettings.Builder riverSpawns() {
         MobSpawnSettings.Builder builder = new MobSpawnSettings.Builder().addSpawn(MobCategory.WATER_CREATURE,
                 2,
-                new MobSpawnSettings.SpawnerData(EntityType.SQUID, 1, 4));
+                new MobSpawnSettings.SpawnerData(EntityTypes.SQUID, 1, 4));
         BiomeDefaultFeatures.commonSpawns(builder);
-        builder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityType.DROWNED, 1, 1));
+        builder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityTypes.DROWNED, 1, 1));
         return builder;
     }
 
