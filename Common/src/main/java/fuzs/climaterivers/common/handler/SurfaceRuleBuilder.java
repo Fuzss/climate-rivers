@@ -1,6 +1,7 @@
 package fuzs.climaterivers.common.handler;
 
 import fuzs.climaterivers.common.init.ModBiomes;
+import fuzs.climaterivers.common.world.level.levelgen.LegacyBiomeConditionSource;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.SurfaceRules;
@@ -21,7 +22,7 @@ public class SurfaceRuleBuilder {
         SurfaceRules.ConditionSource conditionSource8 = SurfaceRules.waterBlockCheck(-1, 0);
         SurfaceRules.ConditionSource conditionSource9 = SurfaceRules.waterBlockCheck(0, 0);
         SurfaceRules.ConditionSource conditionSource10 = SurfaceRules.waterStartCheck(-6, -1);
-        SurfaceRules.ConditionSource conditionSource14 = SurfaceRules.isBiome(ModBiomes.WARM_RIVER_BIOME);
+        SurfaceRules.ConditionSource conditionSource14 = LegacyBiomeConditionSource.isBiome(ModBiomes.WARM_RIVER_BIOME);
 
         SurfaceRules.RuleSource ruleSource = SurfaceRules.sequence(SurfaceRules.ifTrue(conditionSource9, GRASS_BLOCK),
                 DIRT);
@@ -31,7 +32,7 @@ public class SurfaceRuleBuilder {
                 GRAVEL);
 
         SurfaceRules.RuleSource ruleSource4 = SurfaceRules.sequence(SurfaceRules.ifTrue(conditionSource14, ruleSource2),
-                SurfaceRules.ifTrue(SurfaceRules.isBiome(ModBiomes.COLD_RIVER_BIOME), ruleSource3));
+                SurfaceRules.ifTrue(LegacyBiomeConditionSource.isBiome(ModBiomes.COLD_RIVER_BIOME), ruleSource3));
         // we need dirt as the below water surface material, otherwise the disk features cannot be placed
         SurfaceRules.RuleSource ruleSource7 = SurfaceRules.sequence(SurfaceRules.ifTrue(conditionSource9, ruleSource4),
                 DIRT);
@@ -47,11 +48,11 @@ public class SurfaceRuleBuilder {
                                 SurfaceRules.ifTrue(conditionSource14,
                                         SurfaceRules.ifTrue(SurfaceRules.DEEP_UNDER_FLOOR, SANDSTONE)))),
                 SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
-                        SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.isBiome(ModBiomes.WARM_RIVER_BIOME,
+                        SurfaceRules.sequence(SurfaceRules.ifTrue(LegacyBiomeConditionSource.isBiome(ModBiomes.WARM_RIVER_BIOME,
                                 ModBiomes.LUKEWARM_RIVER_BIOME), ruleSource2), ruleSource3)));
 
         return SurfaceRules.ifTrue(SurfaceRules.abovePreliminarySurface(),
-                SurfaceRules.ifTrue(SurfaceRules.isBiome(ModBiomes.COLD_RIVER_BIOME,
+                SurfaceRules.ifTrue(LegacyBiomeConditionSource.isBiome(ModBiomes.COLD_RIVER_BIOME,
                         ModBiomes.LUKEWARM_RIVER_BIOME,
                         ModBiomes.WARM_RIVER_BIOME), ruleSource9));
     }

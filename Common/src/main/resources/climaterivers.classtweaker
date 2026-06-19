@@ -1,3 +1,7 @@
 classTweaker    v2  official
 accessible  field   net/minecraft/world/level/biome/OverworldBiomeBuilder   temperatures    [Lnet/minecraft/world/level/biome/Climate$Parameter;
 accessible  field   net/minecraft/world/level/biome/OverworldBiomeBuilder   humidities  [Lnet/minecraft/world/level/biome/Climate$Parameter;
+accessible	method	net/minecraft/world/level/levelgen/SurfaceRules$Context	getBiome	()Lnet/minecraft/core/Holder;
+accessible	class	net/minecraft/world/level/levelgen/SurfaceRules$Context
+accessible	class	net/minecraft/world/level/levelgen/SurfaceRules$Condition
+accessible	class	net/minecraft/world/level/levelgen/SurfaceRules$LazyYCondition
