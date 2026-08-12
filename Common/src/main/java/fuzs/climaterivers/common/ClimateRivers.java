@@ -20,7 +20,7 @@ public class ClimateRivers implements ModConstructor {
 
     @Override
     public void onCommonSetup() {
-        SurfaceGeneration.addOverworldSurfaceRules(id("rules"), SurfaceRuleBuilder.overworldLike());
+        SurfaceGeneration.addOverworldSurfaceRules(id("rules"), SurfaceRuleBuilder::overworldLike);
     }
 
     public static Identifier id(String path) {
