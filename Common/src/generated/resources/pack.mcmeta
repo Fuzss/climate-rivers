@@ -1,7 +1,10 @@
 {
   "pack": {
     "description": "Resources for Climate Rivers",
-    "max_format": 107,
-    "min_format": 107
+    "max_format": 101,
+    "min_format": [
+      101,
+      1
+    ]
   }
 }
