@@ -1,9 +1,16 @@
 {
   "branches": {
-    "1.21.11": "archived",
-    "1.21.1": "maintained",
     "1.20.1": "fixes",
+    "1.21.1": "maintained",
+    "1.21.11": "archived",
     "26.1.x": "maintained",
     "26.2.x": "primary"
+  },
+  "properties": {
+    "distributions.curseforge.id": "1255421",
+    "distributions.curseforge.slug": "climate-rivers",
+    "distributions.github.slug": "climate-rivers",
+    "distributions.modrinth.id": "DzZWws4q",
+    "distributions.modrinth.slug": "climate-rivers"
   }
 }
