@@ -6,11 +6,17 @@
     "26.1.x": "maintained",
     "26.2.x": "primary"
   },
-  "properties": {
-    "distributions.curseforge.id": "1255421",
-    "distributions.curseforge.slug": "climate-rivers",
-    "distributions.github.slug": "climate-rivers",
-    "distributions.modrinth.id": "DzZWws4q",
-    "distributions.modrinth.slug": "climate-rivers"
+  "distributions": {
+    "curseforge": {
+      "id": "1255421",
+      "slug": "climate-rivers"
+    },
+    "github": {
+      "slug": "climate-rivers"
+    },
+    "modrinth": {
+      "id": "DzZWws4q",
+      "slug": "climate-rivers"
+    }
   }
 }
