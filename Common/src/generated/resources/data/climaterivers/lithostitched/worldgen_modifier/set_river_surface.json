@@ -1,0 +1,6 @@
+{
+  "type": "lithostitched:set_material_rule",
+  "injection_type": "prepend",
+  "material_rule": "climaterivers:river_surface",
+  "target_rules": "minecraft:overworld/surface"
+}

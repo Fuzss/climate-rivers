@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:sequence",
+  "sequence": [
+    {
+      "type": "minecraft:condition",
+      "if_true": {
+        "type": "minecraft:biome",
+        "biome_is": "climaterivers:warm_river"
+      },
+      "then_run": "minecraft:overworld/sand_or_sandstone_if_ceiling"
+    },
+    {
+      "type": "minecraft:condition",
+      "if_true": {
+        "type": "minecraft:biome",
+        "biome_is": "climaterivers:cold_river"
+      },
+      "then_run": "minecraft:overworld/gravel_or_stone_if_ceiling"
+    }
+  ]
+}
