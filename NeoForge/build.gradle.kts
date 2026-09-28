@@ -4,5 +4,5 @@ plugins {
 
 dependencies {
     modApi(sharedLibs.puzzleslib.neoforge)
-    api(sharedLibs.biolith.neoforge)
+    api(sharedLibs.lithostitched.neoforge)
 }

@@ -9,23 +9,29 @@ import net.minecraft.data.worldgen.features.MiscOverworldFeatures;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.placement.*;
 import net.minecraft.world.level.material.Fluids;
 
-public class ModPlacedFeatures {
-    public static final ResourceKey<PlacedFeature> DISK_GRAVEL_PLACED_FEATURE = ResourceKey.create(Registries.PLACED_FEATURE,
-            ClimateRivers.id("disk_gravel"));
-    public static final ResourceKey<PlacedFeature> DISK_SAND_PLACED_FEATURE = ResourceKey.create(Registries.PLACED_FEATURE,
-            ClimateRivers.id("disk_sand"));
+public final class ModPlacedFeatures {
+    public static final ResourceKey<PlacedFeature> DISK_GRAVEL_PLACED_FEATURE = register("disk_gravel");
+    public static final ResourceKey<PlacedFeature> DISK_SAND_PLACED_FEATURE = register("disk_sand");
+
+    private ModPlacedFeatures() {
+        // NO-OP
+    }
+
+    private static ResourceKey<PlacedFeature> register(String path) {
+        return ResourceKey.create(Registries.PLACED_FEATURE, ClimateRivers.id(path));
+    }
 
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
-        HolderGetter<ConfiguredFeature<?, ?>> holderGetter = context.lookup(Registries.CONFIGURED_FEATURE);
-        Holder<ConfiguredFeature<?, ?>> holder9 = holderGetter.getOrThrow(MiscOverworldFeatures.DISK_GRAVEL);
-        Holder<ConfiguredFeature<?, ?>> holder10 = holderGetter.getOrThrow(MiscOverworldFeatures.DISK_SAND);
+        HolderGetter<Feature> holderGetter = context.lookup(Registries.FEATURE);
+        Holder<Feature> gravelDisk = holderGetter.getOrThrow(MiscOverworldFeatures.DISK_GRAVEL);
+        Holder<Feature> sandDisk = holderGetter.getOrThrow(MiscOverworldFeatures.DISK_SAND);
         PlacementUtils.register(context,
                 DISK_GRAVEL_PLACED_FEATURE,
-                holder9,
+                gravelDisk,
                 CountPlacement.of(9),
                 InSquarePlacement.spread(),
                 PlacementUtils.HEIGHTMAP_TOP_SOLID,
@@ -33,7 +39,7 @@ public class ModPlacedFeatures {
                 BiomeFilter.biome());
         PlacementUtils.register(context,
                 DISK_SAND_PLACED_FEATURE,
-                holder10,
+                sandDisk,
                 InSquarePlacement.spread(),
                 PlacementUtils.HEIGHTMAP_TOP_SOLID,
                 BlockPredicateFilter.forPredicate(BlockPredicate.matchesFluids(Fluids.WATER)),

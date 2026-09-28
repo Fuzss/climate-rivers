@@ -13,14 +13,6 @@
     },
     "dependencies": [
         {
-            "name": "biolith",
-            "type": "required",
-            "platforms": [
-                "fabric",
-                "neoforge"
-            ]
-        },
-        {
             "name": "fabricapi",
             "type": "required",
             "platforms": [
@@ -32,6 +24,14 @@
             "type": "required",
             "platforms": [
                 "fabric"
+            ]
+        },
+        {
+            "name": "lithostitched",
+            "type": "required",
+            "platforms": [
+                "fabric",
+                "neoforge"
             ]
         },
         {

@@ -1,62 +1,81 @@
 package fuzs.climaterivers.common.handler;
 
 import fuzs.climaterivers.common.init.ModBiomes;
+import fuzs.climaterivers.common.init.ModMaterialRules;
 import net.minecraft.core.HolderGetter;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.data.worldgen.material.VanillaMaterialConditions;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.levelgen.SurfaceRules;
+import net.minecraft.world.level.levelgen.material.MaterialRules;
+import net.minecraft.world.level.levelgen.material.condition.MaterialCondition;
+import net.minecraft.world.level.levelgen.material.rule.MaterialRule;
 
 public class SurfaceRuleBuilder {
-    private static final SurfaceRules.RuleSource STONE = makeStateRule(Blocks.STONE);
-    private static final SurfaceRules.RuleSource DIRT = makeStateRule(Blocks.DIRT);
-    private static final SurfaceRules.RuleSource GRASS_BLOCK = makeStateRule(Blocks.GRASS_BLOCK);
-    private static final SurfaceRules.RuleSource GRAVEL = makeStateRule(Blocks.GRAVEL);
-    private static final SurfaceRules.RuleSource SAND = makeStateRule(Blocks.SAND);
-    private static final SurfaceRules.RuleSource SANDSTONE = makeStateRule(Blocks.SANDSTONE);
+    private static final MaterialRule DIRT = makeStateRule(Blocks.DIRT);
+    private static final MaterialRule GRASS_BLOCK = makeStateRule(Blocks.GRASS_BLOCK);
+    private static final MaterialRule SANDSTONE = makeStateRule(Blocks.SANDSTONE);
 
-    private static SurfaceRules.RuleSource makeStateRule(Block block) {
-        return SurfaceRules.state(block.defaultBlockState());
+    /**
+     * @see net.minecraft.data.worldgen.material.OverworldMaterialRules#makeStateRule(Block)
+     */
+    private static MaterialRule makeStateRule(Block block) {
+        return MaterialRules.state(block.defaultBlockState());
     }
 
-    public static SurfaceRules.RuleSource overworldLike(HolderGetter<Biome> biomeLookup) {
-        SurfaceRules.ConditionSource conditionSource8 = SurfaceRules.waterBlockCheck(-1, 0);
-        SurfaceRules.ConditionSource conditionSource9 = SurfaceRules.waterBlockCheck(0, 0);
-        SurfaceRules.ConditionSource conditionSource10 = SurfaceRules.waterStartCheck(-6, -1);
-        SurfaceRules.ConditionSource conditionSource14 = SurfaceRules.isBiome(biomeLookup, ModBiomes.WARM_RIVER_BIOME);
+    public static MaterialRule overworldLike(BootstrapContext<MaterialRule> context) {
+        HolderGetter<Biome> biomes = context.lookup(Registries.BIOME);
+        HolderGetter<MaterialCondition> conditions = context.lookup(Registries.MATERIAL_CONDITION);
+        HolderGetter<MaterialRule> rules = context.lookup(Registries.MATERIAL_RULE);
 
-        SurfaceRules.RuleSource ruleSource = SurfaceRules.sequence(SurfaceRules.ifTrue(conditionSource9, GRASS_BLOCK),
-                DIRT);
-        SurfaceRules.RuleSource ruleSource2 = SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.ON_CEILING,
-                SANDSTONE), SAND);
-        SurfaceRules.RuleSource ruleSource3 = SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.ON_CEILING, STONE),
-                GRAVEL);
+        // 26.3 named conditions (no vanilla constant exists for waterBlockCheck(0, 0)).
+        MaterialCondition atWaterSurface = MaterialRules.waterBlockCheck(0, 0);
+        MaterialCondition onFloor = MaterialRules.getCondition(conditions, VanillaMaterialConditions.ON_FLOOR);
+        MaterialCondition underFloor = MaterialRules.getCondition(conditions, VanillaMaterialConditions.UNDER_FLOOR);
+        MaterialCondition deepUnderFloor = MaterialRules.getCondition(conditions,
+                VanillaMaterialConditions.DEEP_UNDER_FLOOR);
+        MaterialCondition notUnderwater = MaterialRules.getCondition(conditions,
+                VanillaMaterialConditions.NOT_UNDERWATER);
+        MaterialCondition notUnderDeepWater = MaterialRules.getCondition(conditions,
+                VanillaMaterialConditions.NOT_UNDER_DEEP_WATER);
 
-        SurfaceRules.RuleSource ruleSource4 = SurfaceRules.sequence(SurfaceRules.ifTrue(conditionSource14, ruleSource2),
-                SurfaceRules.ifTrue(SurfaceRules.isBiome(biomeLookup, ModBiomes.COLD_RIVER_BIOME), ruleSource3));
-        // we need dirt as the below water surface material, otherwise the disk features cannot be placed
-        SurfaceRules.RuleSource ruleSource7 = SurfaceRules.sequence(SurfaceRules.ifTrue(conditionSource9, ruleSource4),
-                DIRT);
-        // warm ocean - top block sand / sandstone with dirt all below
-        // lukewarm ocean - top block grass with dirt all below
-        // cold ocean - top block gravel / stone with dirt all below
-        SurfaceRules.RuleSource ruleSource8 = SurfaceRules.sequence(ruleSource4, ruleSource);
+        MaterialCondition isWarm = MaterialRules.isBiome(biomes, ModBiomes.WARM_RIVER_BIOME);
+        MaterialCondition isCold = MaterialRules.isBiome(biomes, ModBiomes.COLD_RIVER_BIOME);
+        MaterialCondition isWarmOrLukewarm = MaterialRules.isBiome(biomes,
+                ModBiomes.WARM_RIVER_BIOME,
+                ModBiomes.LUKEWARM_RIVER_BIOME);
+        MaterialCondition isRiver = MaterialRules.isBiome(biomes,
+                ModBiomes.COLD_RIVER_BIOME,
+                ModBiomes.LUKEWARM_RIVER_BIOME,
+                ModBiomes.WARM_RIVER_BIOME);
 
-        SurfaceRules.RuleSource ruleSource9 = SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
-                        SurfaceRules.ifTrue(conditionSource8, ruleSource8)),
-                SurfaceRules.ifTrue(conditionSource10,
-                        SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR, ruleSource7),
-                                SurfaceRules.ifTrue(conditionSource14,
-                                        SurfaceRules.ifTrue(SurfaceRules.DEEP_UNDER_FLOOR, SANDSTONE)))),
-                SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
-                        SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.isBiome(biomeLookup,
-                                ModBiomes.WARM_RIVER_BIOME,
-                                ModBiomes.LUKEWARM_RIVER_BIOME), ruleSource2), ruleSource3)));
+        // Reuse vanilla registered rules instead of redefining them.
+        MaterialRule sandOrSandstone = MaterialRules.getRule(rules, ModMaterialRules.SAND_OR_SANDSTONE_IF_CEILING);
+        MaterialRule gravelOrStone = MaterialRules.getRule(rules, ModMaterialRules.GRAVEL_OR_STONE_IF_CEILING);
 
-        return SurfaceRules.ifTrue(SurfaceRules.abovePreliminarySurface(),
-                SurfaceRules.ifTrue(SurfaceRules.isBiome(biomeLookup,
-                        ModBiomes.COLD_RIVER_BIOME,
-                        ModBiomes.LUKEWARM_RIVER_BIOME,
-                        ModBiomes.WARM_RIVER_BIOME), ruleSource9));
+        // Shared sub-rule (used twice) registered as a named entry.
+        MaterialRule biomeTop = MaterialRules.registerAndWrap(context,
+                ModMaterialRules.RIVER_BIOME_TOP,
+                MaterialRules.sequence(MaterialRules.ifTrue(isWarm, sandOrSandstone),
+                        MaterialRules.ifTrue(isCold, gravelOrStone)));
+
+        MaterialRule grassOrDirt = MaterialRules.sequence(MaterialRules.ifTrue(atWaterSurface, GRASS_BLOCK), DIRT);
+        MaterialRule underwaterUnder = MaterialRules.sequence(MaterialRules.ifTrue(atWaterSurface, biomeTop), DIRT);
+        MaterialRule surfaceTop = MaterialRules.sequence(biomeTop, grassOrDirt);
+
+        // Branch order is behavior-critical: UNDER_FLOOR/DEEP_UNDER_FLOOR are supersets of ON_FLOOR.
+        MaterialRule riverSurface = MaterialRules.sequence(MaterialRules.ifTrue(onFloor,
+                        MaterialRules.ifTrue(notUnderwater, surfaceTop)),
+                MaterialRules.ifTrue(notUnderDeepWater,
+                        MaterialRules.sequence(MaterialRules.ifTrue(underFloor, underwaterUnder),
+                                MaterialRules.ifTrue(isWarm, MaterialRules.ifTrue(deepUnderFloor, SANDSTONE)))),
+                MaterialRules.ifTrue(onFloor,
+                        MaterialRules.sequence(MaterialRules.ifTrue(isWarmOrLukewarm, sandOrSandstone),
+                                gravelOrStone)));
+
+        return MaterialRules.ifTrue(MaterialRules.abovePreliminarySurface(),
+                MaterialRules.ifTrue(isRiver, riverSurface));
     }
 }

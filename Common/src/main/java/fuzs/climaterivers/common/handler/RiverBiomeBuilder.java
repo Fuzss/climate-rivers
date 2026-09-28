@@ -11,7 +11,7 @@ import net.minecraft.world.level.biome.OverworldBiomeBuilder;
 import java.util.function.Consumer;
 
 public class RiverBiomeBuilder {
-    static final ResourceKey<Biome>[][] UNFROZEN_RIVERS = new ResourceKey[][]{
+    private static final ResourceKey<Biome>[][] UNFROZEN_RIVERS = new ResourceKey[][]{
             {null, null, null, null, null}, {
             ModBiomes.COLD_RIVER_BIOME,
             ModBiomes.COLD_RIVER_BIOME,
@@ -57,7 +57,7 @@ public class RiverBiomeBuilder {
      * Climate.Parameter, Climate.Parameter, Climate.Parameter, Climate.Parameter, float, ResourceKey)} as we have a
      * mixin going into the vanilla one.
      */
-    static void addSurfaceBiome(Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> mapper, Climate.Parameter temperature, Climate.Parameter humidity, Climate.Parameter continentalness, Climate.Parameter erosion, Climate.Parameter weirdness, float offset, ResourceKey<Biome> biome) {
+    private static void addSurfaceBiome(Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> mapper, Climate.Parameter temperature, Climate.Parameter humidity, Climate.Parameter continentalness, Climate.Parameter erosion, Climate.Parameter weirdness, float offset, ResourceKey<Biome> biome) {
         mapper.accept(Pair.of(Climate.parameters(temperature,
                 humidity,
                 continentalness,

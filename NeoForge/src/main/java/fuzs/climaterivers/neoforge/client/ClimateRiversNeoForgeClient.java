@@ -4,7 +4,7 @@ import fuzs.climaterivers.common.ClimateRivers;
 import fuzs.climaterivers.common.client.ClimateRiversClient;
 import fuzs.climaterivers.common.data.client.ModLanguageProvider;
 import fuzs.puzzleslib.common.api.client.core.v1.ClientModConstructor;
-import fuzs.puzzleslib.neoforge.api.data.v2.core.DataProviderHelper;
+import fuzs.puzzleslib.neoforge.api.data.v3.core.DataProviderBuilder;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.fml.common.Mod;
 
@@ -13,6 +13,6 @@ public class ClimateRiversNeoForgeClient {
 
     public ClimateRiversNeoForgeClient() {
         ClientModConstructor.construct(ClimateRivers.MOD_ID, ClimateRiversClient::new);
-        DataProviderHelper.registerDataProviders(ClimateRivers.MOD_ID, ModLanguageProvider::new);
+        DataProviderBuilder.of(ClimateRivers.MOD_ID).addProvider(ModLanguageProvider::new);
     }
 }
