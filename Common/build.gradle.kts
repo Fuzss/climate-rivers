@@ -6,9 +6,3 @@ dependencies {
     modCompileOnlyApi(sharedLibs.puzzleslib.common)
     compileOnlyApi(sharedLibs.lithostitched.common)
 }
-
-multiloader {
-    mixins {
-        mixin("BiomeDataMixin", "OverworldBiomeBuilderMixin", "PlacementUtilsMixin")
-    }
-}

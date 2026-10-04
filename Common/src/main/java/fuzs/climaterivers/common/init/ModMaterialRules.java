@@ -1,7 +1,7 @@
 package fuzs.climaterivers.common.init;
 
 import fuzs.climaterivers.common.ClimateRivers;
-import fuzs.climaterivers.common.handler.SurfaceRuleBuilder;
+import fuzs.climaterivers.common.handler.MaterialRuleBuilder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.Identifier;
@@ -39,6 +39,6 @@ public final class ModMaterialRules {
     }
 
     public static void bootstrap(BootstrapContext<MaterialRule> context) {
-        context.register(RIVER_SURFACE, SurfaceRuleBuilder.overworldLike(context));
+        context.register(RIVER_SURFACE, MaterialRuleBuilder.overworldLike(context));
     }
 }

@@ -3,6 +3,7 @@ package fuzs.climaterivers.neoforge;
 import dev.worldgen.lithostitched.api.registry.LithostitchedRegistries;
 import fuzs.climaterivers.common.ClimateRivers;
 import fuzs.climaterivers.common.data.tags.ModBiomeTagsProvider;
+import fuzs.climaterivers.common.init.ModBiomeInjectors;
 import fuzs.climaterivers.common.init.ModBiomes;
 import fuzs.climaterivers.common.init.ModMaterialRules;
 import fuzs.climaterivers.common.init.ModPlacedFeatures;
@@ -22,6 +23,7 @@ public class ClimateRiversNeoForge {
                 .addWorldBootstrap(Registries.BIOME, ModBiomes::bootstrap)
                 .addWorldBootstrap(Registries.MATERIAL_RULE, ModMaterialRules::bootstrap)
                 .addWorldBootstrap(LithostitchedRegistries.WORLDGEN_MODIFIER, ModWorldgenModifiers::bootstrap)
+                .addWorldBootstrap(LithostitchedRegistries.BIOME_INJECTOR, ModBiomeInjectors::bootstrap)
                 .addProvider(ModBiomeTagsProvider::new);
     }
 }

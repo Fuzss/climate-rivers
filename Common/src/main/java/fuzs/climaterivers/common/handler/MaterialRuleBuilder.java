@@ -13,7 +13,7 @@ import net.minecraft.world.level.levelgen.material.MaterialRules;
 import net.minecraft.world.level.levelgen.material.condition.MaterialCondition;
 import net.minecraft.world.level.levelgen.material.rule.MaterialRule;
 
-public class SurfaceRuleBuilder {
+public class MaterialRuleBuilder {
     private static final MaterialRule DIRT = makeStateRule(Blocks.DIRT);
     private static final MaterialRule GRASS_BLOCK = makeStateRule(Blocks.GRASS_BLOCK);
     private static final MaterialRule SANDSTONE = makeStateRule(Blocks.SANDSTONE);
