@@ -1,4 +1,8 @@
-// 26.3	2026-09-28T18:05:20.165888	Registries for world
+// 26.3	2026-10-04T21:39:53.942065	Registries for world
+ce08584441f097f971b58795f23f73224f5cab62 data/climaterivers/lithostitched/biome_injector/cold_river.json
+9d8bc9c3fb3c29eeff8b18be15745158da11efbe data/climaterivers/lithostitched/biome_injector/dry_warm_river.json
+6ac43dc98b70c49b661a8108cbc8f8da4d2e596d data/climaterivers/lithostitched/biome_injector/lukewarm_river.json
+8dfbf575a36bab0fc0927cea55c2edc7a8d5b2bb data/climaterivers/lithostitched/biome_injector/warm_river.json
 f0d6e2f27760fc727c33f82b389a928eb4142064 data/climaterivers/lithostitched/worldgen_modifier/set_river_surface.json
 75b0d4fcb952f17ba9b0232864281649629d3c04 data/climaterivers/worldgen/biome/cold_river.json
 5173207436fd569ab3b819534dc89e5dd4a189c2 data/climaterivers/worldgen/biome/lukewarm_river.json

@@ -1,0 +1,12 @@
+{
+  "type": "lithostitched:replace_partially",
+  "dimension": "minecraft:overworld",
+  "parameters": {
+    "temperature": [
+      -0.45,
+      -0.15
+    ]
+  },
+  "replacement": "climaterivers:cold_river",
+  "targets": "minecraft:river"
+}
